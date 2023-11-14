@@ -54,6 +54,9 @@ resource "aws_lambda_function" "hapi_lambda" {
 resource "aws_lambda_function_url" "hapi_lambda_funtion_url" {
   function_name      = aws_lambda_function.hapi_lambda.id
   authorization_type = "NONE"
+  cors {
+    allow_origins = ["*"]
+  }
 }
 
 resource "aws_cloudwatch_log_group" "hapi_lambda_loggroup" {
